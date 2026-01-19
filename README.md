@@ -45,11 +45,11 @@ Track your reading progress with three distinct statuses:
 
 ### Video Walkthrough
 
-See the application in action:
+See the application in action - click the image below to watch the demo video:
 
-<video src="debug/2026-01-19 16-57-59.mp4" controls width="100%" style="max-width: 800px;">
-  Your browser does not support the video tag. You can <a href="debug/2026-01-19 16-57-59.mp4">download the demo video</a> instead.
-</video>
+[![Video Demo](debug/app-view.PNG)](debug/2026-01-19%2016-57-59.mp4)
+
+> 🎬 **[Click here to download and watch the full demo video](debug/2026-01-19%2016-57-59.mp4)**
 
 ### Screenshots
 
