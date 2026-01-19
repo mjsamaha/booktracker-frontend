@@ -408,7 +408,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔗 Related Projects
 
-- **Backend Repository**: [Personal Book Tracker Backend](../booktracker-backend)
+- **Backend Repository**: [Personal Book Tracker Backend](https://github.com/mjsamaha/booktracker-backend)
 
 ---
 
