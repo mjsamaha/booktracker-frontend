@@ -41,6 +41,49 @@ Track your reading progress with three distinct statuses:
 
 ---
 
+## 🎥 Demo
+
+### Video Walkthrough
+
+See the application in action:
+
+<video src="debug/2026-01-19 16-57-59.mp4" controls width="100%" style="max-width: 800px;">
+  Your browser does not support the video tag. You can <a href="debug/2026-01-19 16-57-59.mp4">download the demo video</a> instead.
+</video>
+
+### Screenshots
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="debug/app-view.PNG" alt="Main Application View" width="100%"/>
+      <p align="center"><b>Main Application View</b><br/>Book list with search and filter capabilities</p>
+    </td>
+    <td width="50%">
+      <img src="debug/filter-by-search.PNG" alt="Search and Filter" width="100%"/>
+      <p align="center"><b>Search & Filter</b><br/>Real-time search and status filtering</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <img src="debug/book-details.PNG" alt="Book Details Modal" width="100%"/>
+      <p align="center"><b>Book Details</b><br/>Comprehensive book information view</p>
+    </td>
+    <td width="50%">
+      <img src="debug/edit_book.PNG" alt="Edit Book Form" width="100%"/>
+      <p align="center"><b>Edit Book</b><br/>Modal form with validation</p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img src="debug/confirm-modal.PNG" alt="Confirmation Dialog" width="50%"/>
+      <p align="center"><b>Confirmation Dialog</b><br/>Safe deletion with user confirmation</p>
+    </td>
+  </tr>
+</table>
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Framework:** [Angular 20](https://angular.io/) (Standalone Components)
