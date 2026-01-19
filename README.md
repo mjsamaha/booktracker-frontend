@@ -45,11 +45,14 @@ Track your reading progress with three distinct statuses:
 
 ### Video Walkthrough
 
-See the application in action - click the image below to watch the demo video:
+Watch the complete application demo:
 
-[![Video Demo](debug/app-view.PNG)](debug/2026-01-19%2016-57-59.mp4)
-
-> 🎬 **[Click here to download and watch the full demo video](debug/2026-01-19%2016-57-59.mp4)**
+<div align="center">
+  <a href="https://youtu.be/2EpK6Azl-nk">
+    <img src="https://img.youtube.com/vi/2EpK6Azl-nk/maxresdefault.jpg" alt="Personal Book Tracker Demo" width="800"/>
+  </a>
+  <p><i>Click to watch on YouTube</i></p>
+</div>
 
 ### Screenshots
 
