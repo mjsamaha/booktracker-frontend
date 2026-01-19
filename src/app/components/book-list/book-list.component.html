@@ -1,0 +1,150 @@
+<div class="book-list-container">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="title-section">
+      <h2>
+        <span nz-icon nzType="book" nzTheme="outline"></span>
+        My Books
+      </h2>
+      <p class="subtitle">Manage your personal book collection</p>
+    </div>
+    <button nz-button nzType="primary" nzSize="large" (click)="onAddBook()">
+      <span nz-icon nzType="plus"></span>
+      Add Book
+    </button>
+  </div>
+
+  <!-- Search and Filter Section -->
+  <div class="filter-section">
+    <nz-space nzSize="middle">
+      <!-- Search Input -->
+      <nz-input-group [nzPrefix]="prefixIconSearch" *nzSpaceItem>
+        <input
+          type="text"
+          nz-input
+          placeholder="Search by title, author, or genre..."
+          [ngModel]="searchTerm()"
+          (ngModelChange)="onSearchChange($event)"
+          style="width: 300px;"
+        />
+      </nz-input-group>
+      <ng-template #prefixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+
+      <!-- Status Filter -->
+      <nz-select
+        *nzSpaceItem
+        [ngModel]="selectedStatus()"
+        (ngModelChange)="onStatusFilterChange($event)"
+        style="width: 180px;"
+        nzPlaceHolder="Filter by status">
+        <nz-option
+          *ngFor="let option of statusOptions"
+          [nzValue]="option.value"
+          [nzLabel]="option.label">
+        </nz-option>
+      </nz-select>
+
+      <!-- Results Count -->
+      <span *nzSpaceItem class="results-count">
+        {{ filteredBooks().length }} book(s) found
+      </span>
+    </nz-space>
+  </div>
+
+  <!-- Table Section -->
+  <nz-table
+    #booksTable
+    [nzData]="filteredBooks()"
+    [nzLoading]="loading()"
+    [nzPageSize]="10"
+    [nzShowSizeChanger]="true"
+    [nzPageSizeOptions]="[10, 20, 50]"
+    nzShowPagination
+    nzBordered>
+    <thead>
+      <tr>
+        <th nzWidth="30%">Title</th>
+        <th nzWidth="20%">Author</th>
+        <th nzWidth="15%">Genre</th>
+        <th nzWidth="12%">Status</th>
+        <th nzWidth="13%">Updated</th>
+        <th nzWidth="10%" nzAlign="center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of booksTable.data">
+        <td>
+          <strong class="book-title">{{ book.title }}</strong>
+        </td>
+        <td>{{ book.author }}</td>
+        <td>
+          <nz-tag nzColor="blue">{{ book.genre }}</nz-tag>
+        </td>
+        <td>
+          <nz-tag [nzColor]="BookStatusColors[book.status]">
+            {{ BookStatusLabels[book.status] }}
+          </nz-tag>
+        </td>
+        <td>{{ formatDate(book.updatedAt) }}</td>
+        <td nzAlign="center">
+          <nz-space nzSize="small">
+            <!-- View Button -->
+            <button
+              *nzSpaceItem
+              nz-button
+              nzType="default"
+              nzSize="small"
+              nz-tooltip="View Details"
+              (click)="onViewBook(book)">
+              <span nz-icon nzType="eye" nzTheme="outline"></span>
+            </button>
+
+            <!-- Edit Button -->
+            <button
+              *nzSpaceItem
+              nz-button
+              nzType="default"
+              nzSize="small"
+              nz-tooltip="Edit Book"
+              (click)="onEditBook(book)">
+              <span nz-icon nzType="edit" nzTheme="outline"></span>
+            </button>
+
+            <!-- Delete Button -->
+            <button
+              *nzSpaceItem
+              nz-button
+              nzType="default"
+              nzDanger
+              nzSize="small"
+              nz-tooltip="Delete Book"
+              nz-popconfirm
+              nzPopconfirmTitle="Are you sure you want to delete this book?"
+              nzPopconfirmPlacement="topRight"
+              (nzOnConfirm)="onDeleteBook(book)">
+              <span nz-icon nzType="delete" nzTheme="outline"></span>
+            </button>
+          </nz-space>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <!-- Book Form Modal -->
+  <app-book-form
+    [(visible)]="showBookForm"
+    [book]="selectedBookForEdit()"
+    (bookSaved)="onBookSaved()">
+  </app-book-form>
+
+  <!-- Book Detail Modal -->
+  <app-book-detail
+    [(visible)]="showBookDetail"
+    [book]="selectedBookForView()"
+    (editRequested)="onEditFromDetail($event)">
+  </app-book-detail>
+
+
+</div>

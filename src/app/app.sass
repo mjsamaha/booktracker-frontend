@@ -1,0 +1,54 @@
+.app-layout
+  min-height: 100vh
+
+.header
+  display: flex
+  align-items: center
+  background: #001529
+  padding: 0 24px
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1)
+
+  .logo
+    display: flex
+    align-items: center
+    color: #fff
+    font-size: 20px
+    font-weight: 600
+    margin-right: 48px
+
+    span[nz-icon]
+      font-size: 28px
+      margin-right: 12px
+
+    .logo-text
+      white-space: nowrap
+
+  .header-menu
+    flex: 1
+
+.sider
+  background: #fff
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05)
+
+  ::ng-deep
+    .ant-layout-sider-children
+      display: flex
+      flex-direction: column
+
+    .ant-menu
+      border-right: 0
+
+.inner-layout
+  background: #f0f2f5
+
+.content
+  margin: 24px
+  padding: 24px
+  background: #fff
+  min-height: 280px
+  border-radius: 4px
+
+.footer
+  text-align: center
+  background: #f0f2f5
+  color: rgba(0, 0, 0, 0.45)

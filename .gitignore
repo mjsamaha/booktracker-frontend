@@ -41,3 +41,76 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+*.env
+**/.env
+
+# Environment files with sensitive data
+# Note: Keep environment.ts and environment.prod.ts in version control
+# Only ignore if they contain actual secrets/API keys
+# src/environments/environment.local.ts
+# src/environments/*.secret.ts
+
+# API keys and credentials
+secrets.json
+secrets.*.json
+credentials.json
+config/secrets.json
+
+# Local configuration files
+config.local.json
+*.local.json
+
+# SSL certificates and keys
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+
+# Authentication tokens
+.auth-token
+auth.json
+token.json
+
+# Database files (if any local db used)
+*.db
+*.sqlite
+*.sqlite3
+
+# Log files with potentially sensitive data
+*.log
+logs/
+*.log.*
+
+# Backup files
+*.backup
+*.bak
+*.old
+
+# IDE-specific files that might contain secrets
+.idea/workspace.xml
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/httpRequests/
+.vscode/settings.json.local
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+~*

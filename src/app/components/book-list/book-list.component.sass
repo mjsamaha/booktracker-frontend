@@ -1,0 +1,57 @@
+.book-list-container
+  padding: 0
+
+.header-section
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 24px
+  padding-bottom: 16px
+  border-bottom: 1px solid #f0f0f0
+
+  .title-section
+    h2
+      margin: 0
+      font-size: 24px
+      font-weight: 600
+      display: flex
+      align-items: center
+      gap: 12px
+
+      span[nz-icon]
+        font-size: 28px
+        color: #1890ff
+
+    .subtitle
+      margin: 4px 0 0 0
+      color: rgba(0, 0, 0, 0.45)
+      font-size: 14px
+
+.filter-section
+  margin-bottom: 16px
+  padding: 16px
+  background: #fafafa
+  border-radius: 4px
+
+  .results-count
+    color: rgba(0, 0, 0, 0.45)
+    font-size: 14px
+
+.book-title
+  color: #1890ff
+  cursor: pointer
+
+  &:hover
+    text-decoration: underline
+
+::ng-deep
+  .ant-table
+    font-size: 14px
+
+  .ant-table-thead > tr > th
+    background: #fafafa
+    font-weight: 600
+
+  .ant-btn-sm
+    padding: 0 8px
+    height: 28px

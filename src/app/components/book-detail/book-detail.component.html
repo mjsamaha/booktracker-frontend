@@ -1,0 +1,97 @@
+<nz-modal
+  [(nzVisible)]="visible"
+  nzTitle="Book Details"
+  [nzClosable]="true"
+  [nzMaskClosable]="true"
+  [nzWidth]="700"
+  (nzOnCancel)="handleCancel()"
+  [nzFooter]="modalFooter">
+
+  <ng-container *nzModalContent>
+    <div *ngIf="book; else noBook" class="book-detail-content">
+
+      <!-- Header Section with Title and Status -->
+      <div class="book-header">
+        <div class="title-section">
+          <h2 class="book-title">
+            <span nz-icon nzType="book" nzTheme="outline"></span>
+            {{ book.title }}
+          </h2>
+          <div class="status-badge">
+            <nz-tag [nzColor]="BookStatusColors[book.status]" class="status-tag">
+              <span nz-icon [nzType]="getStatusIcon(book.status)" nzTheme="outline"></span>
+              {{ BookStatusLabels[book.status] }}
+            </nz-tag>
+          </div>
+        </div>
+      </div>
+
+      <nz-divider></nz-divider>
+
+      <!-- Book Information -->
+      <nz-descriptions nzBordered [nzColumn]="2" nzSize="middle">
+        <nz-descriptions-item nzTitle="Author" [nzSpan]="2">
+          <strong>{{ book.author }}</strong>
+        </nz-descriptions-item>
+
+        <nz-descriptions-item nzTitle="Genre" [nzSpan]="2">
+          <nz-tag nzColor="blue">{{ book.genre }}</nz-tag>
+        </nz-descriptions-item>
+
+        <nz-descriptions-item nzTitle="Book ID">
+          <code>#{{ book.id }}</code>
+        </nz-descriptions-item>
+
+        <nz-descriptions-item nzTitle="Status">
+          <nz-tag [nzColor]="BookStatusColors[book.status]">
+            {{ BookStatusLabels[book.status] }}
+          </nz-tag>
+        </nz-descriptions-item>
+
+        <nz-descriptions-item nzTitle="Created At" [nzSpan]="2">
+          {{ formatDate(book.createdAt) }}
+        </nz-descriptions-item>
+
+        <nz-descriptions-item nzTitle="Last Updated" [nzSpan]="2">
+          {{ formatDate(book.updatedAt) }}
+        </nz-descriptions-item>
+      </nz-descriptions>
+
+      <!-- Notes Section -->
+      <div class="notes-section">
+        <h3>
+          <span nz-icon nzType="file-text" nzTheme="outline"></span>
+          Notes
+        </h3>
+        <div *ngIf="book.notes && book.notes.trim().length > 0; else noNotes" class="notes-content">
+          <p>{{ book.notes }}</p>
+        </div>
+        <ng-template #noNotes>
+          <nz-empty
+            nzNotFoundImage="simple"
+            [nzNotFoundContent]="'No notes available for this book'">
+          </nz-empty>
+        </ng-template>
+      </div>
+
+    </div>
+
+    <ng-template #noBook>
+      <nz-empty
+        [nzNotFoundContent]="'No book data available'"
+        nzNotFoundImage="simple">
+      </nz-empty>
+    </ng-template>
+  </ng-container>
+
+  <!-- Modal Footer -->
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()">
+      Close
+    </button>
+    <button nz-button nzType="primary" (click)="handleEdit()" *ngIf="book">
+      <span nz-icon nzType="edit" nzTheme="outline"></span>
+      Edit Book
+    </button>
+  </ng-template>
+</nz-modal>

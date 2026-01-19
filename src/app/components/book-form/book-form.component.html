@@ -1,0 +1,114 @@
+<nz-modal
+  [(nzVisible)]="visible"
+  [nzTitle]="modalTitle"
+  [nzClosable]="true"
+  [nzMaskClosable]="false"
+  [nzWidth]="600"
+  (nzOnCancel)="handleCancel()"
+  [nzFooter]="modalFooter">
+
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="bookForm" nzLayout="vertical">
+
+      <!-- Title Field -->
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="title">Title</nz-form-label>
+        <nz-form-control nzErrorTip="Please enter a book title (max 255 characters)">
+          <input
+            nz-input
+            formControlName="title"
+            id="title"
+            placeholder="Enter book title"
+            maxlength="255"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <!-- Author Field -->
+      <nz-form-item>
+        <nz-form-label nzRequired nzFor="author">Author</nz-form-label>
+        <nz-form-control nzErrorTip="Please enter the author name (max 255 characters)">
+          <input
+            nz-input
+            formControlName="author"
+            id="author"
+            placeholder="Enter author name"
+            maxlength="255"
+          />
+        </nz-form-control>
+      </nz-form-item>
+
+      <!-- Genre and Status Row -->
+      <nz-row [nzGutter]="16">
+        <!-- Genre Field -->
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="genre">Genre</nz-form-label>
+            <nz-form-control nzErrorTip="Please enter a genre (max 100 characters)">
+              <input
+                nz-input
+                formControlName="genre"
+                id="genre"
+                placeholder="e.g., Fiction, Science, Biography"
+                maxlength="100"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+
+        <!-- Status Field -->
+        <nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label nzRequired nzFor="status">Status</nz-form-label>
+            <nz-form-control nzErrorTip="Please select a status">
+              <nz-select
+                formControlName="status"
+                id="status"
+                nzPlaceHolder="Select status">
+                <nz-option
+                  *ngFor="let option of statusOptions"
+                  [nzValue]="option.value"
+                  [nzLabel]="option.label">
+                </nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </nz-col>
+      </nz-row>
+
+      <!-- Notes Field -->
+      <nz-form-item>
+        <nz-form-label nzFor="notes">Notes</nz-form-label>
+        <nz-form-control nzErrorTip="Notes cannot exceed 1000 characters">
+          <textarea
+            nz-input
+            formControlName="notes"
+            id="notes"
+            placeholder="Add your notes, thoughts, or review about this book..."
+            [nzAutosize]="{ minRows: 4, maxRows: 8 }"
+            maxlength="1000">
+          </textarea>
+          <div class="character-count">
+            {{ bookForm.get('notes')?.value?.length || 0 }} / 1000 characters
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+
+    </form>
+  </ng-container>
+
+  <!-- Modal Footer -->
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()" [disabled]="isSubmitting">
+      Cancel
+    </button>
+    <button
+      nz-button
+      nzType="primary"
+      (click)="handleSubmit()"
+      [nzLoading]="isSubmitting"
+      [disabled]="!bookForm.valid">
+      {{ submitButtonText }}
+    </button>
+  </ng-template>
+</nz-modal>
